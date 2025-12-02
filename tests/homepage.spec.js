@@ -4,7 +4,7 @@ import { HomePage } from '../pages/homepage';
 
 
 
-test('Read Categories',async({page})=>{
+test.only('Read Categories',async({page})=>{
     const homepage = new HomePage(page);
     await page.goto('https://www.demoblaze.com/index.html#')
     await homepage.readCategory();
@@ -33,7 +33,7 @@ test('Select Product',async({page})=>{
 
 })
 
-test.only('Add Product to the Cart',async({page})=>{
+test('Add Product to the Cart',async({page})=>{
     const homepage = new HomePage(page);
     const productName = 'Iphone 6 32gb';
     await page.goto('https://www.demoblaze.com/index.html#');

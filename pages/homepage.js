@@ -67,7 +67,7 @@ async selectProduct(productName){
             const products = await this.page.$$(this.cards)
             console.log('product length is: ',products.length);
             for(let pro of products){
-     await this.page.waitForTimeout(3999);
+    //  await this.page.waitForTimeout(3999);
                 const product = await pro.textContent();
                 if(product.includes(productName)){
                     await pro.click();
@@ -84,6 +84,12 @@ async getProductDetails(productName){
 }
 
 async addToCart(){
+
+    this.page.on('dialog',async dialog =>{
+        await this.page.waitForTimeout(3999);
+
+        await dialog.accept();
+    })
 
     await this.page.locator(this.addToCartBtn).click();
 
